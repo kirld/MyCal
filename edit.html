@@ -1,0 +1,114 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<!-- end google fonts -->
+ 	<script type="text/javascript" src="js/jquery.js"></script>
+ 	<script type="text/javascript" src="js/geturi.js"></script>
+</head>
+<body>
+	<div class="nav-bar home-navigation">
+		<div class="logo content-container center">
+			<img src="img/mycal.png">
+			<a href="index.html"><img src="img/home.png"></a>
+		</div>
+	</div>
+	<div class="content-container center">
+		<h1 style="text-align:center">Edit or Delete</h1>
+		<div>
+			<input type="hidden" id="id" value="" />
+			<div class="input-options">
+				<label>Name</label>
+				<input type="text" id="name" value=""/>
+			</div>
+			<div class="input-options">
+				<label>Day</label>
+				<input type="text" id="day" value="" />
+			</div>
+			<div class="input-options">
+				<label>Time</label>
+				<input type="text" id="time" value="" />
+			</div>
+			<div class="input-options">
+				<label>Instructor</label>
+				<input type="text" id="instructor" value="" />
+			</div>
+			<div class="input-options">
+				<input class="button" type="button" id="update" value="Update" />
+				<input class="button" type="button" id="delete" value="Delete" />
+			</div>
+			<br><br>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var idx = decodeURI(getUrlVars()["id"]);
+			var namex = decodeURI(getUrlVars()["name"]);
+			var dayx = decodeURI(getUrlVars()["day"]);
+			var timex = decodeURI(getUrlVars()["time"]);
+			var instructorx = decodeURI(getUrlVars()["instructor"]);
+
+			$("#id").val(idx);
+			$("#name").val(namex);
+			$("#day").val(dayx);
+			$("#time").val(timex);
+			$("#instructor").val(instructorx);
+
+			$("#update").click(function(){
+				// Grab all the text in the inputs
+				var id = $("#id").val();
+				var name = $("#name").val();
+				var day = $("#day").val();
+				var time = $("#time").val();
+				var instructor = $("#instructor").val();
+				// Create the dataString using the values in the inputs
+				var dataString = "id=" + id + "&name=" + name + "&day=" + day + "&time=" + time + "&instructor=" + instructor + "&update=";
+				console.log(dataString);
+				// Create AJAX request
+				$.ajax({
+					type: "POST",
+					// Point it to update.php file
+					url: "http://localhost/CRUD/php/update.php",
+					data: dataString,
+					crossDomain: true,
+					cache: false,
+					// Have a beforeSend and Success callback
+					beforeSend: function(){
+						$("#update").val("...updating");
+					},
+					success: function(data){
+						$("#update").val("Update");
+						location.href = 'index.html';
+					}
+				}); 
+			});// End of update
+			// Delete 
+			$("#delete").click(function(){
+				// Grab all the text in the input
+				var id = $("#id").val();
+				// Create the dataString using the values in the inputs
+				var dataString = "id=" + id + "&delete=";
+				// Create AJAX request
+				$.ajax({
+					type: "GET",
+					// Point it to update.php file
+					url: "http://localhost/CRUD/php/delete.php",
+					data: dataString,
+					crossDomain: true,
+					cache: false,
+					// Have a beforeSend and Success callback
+					beforeSend: function(){
+						$("#delete").val("...deleting");
+					},
+					success: function(data){
+						$("#delete").val("Delete");
+						location.href = 'index.html';
+					}
+				}); 
+			});//End of delete
+		}); 
+	</script>
+</body>
+</html>

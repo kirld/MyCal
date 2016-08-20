@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <!--<link rel="stylesheet" type="text/css" href="css/ionic.css">-->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<!-- google fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+	<!-- end google fonts -->
+
+ <script type="text/javascript" src="js/jquery.js"></script>
+ <script type="text/javascript">
+ 	$(document).ready(function(){
+ 		var url = "http://localhost/CRUD/php/json.php";
+ 		$.getJSON( url, function(result){
+ 			$.each(result, function( i, field ){
+ 				var id = field.id;
+ 				var name = field.name;
+ 				var day = field.day;
+ 				var instructor = field.instructor;
+ 				var time = field.time;
+ 				$("#listview").append("<a class='item' href='edit.html?id=" + id + "&name=" + name + "&day="  + day + "&time="  + time + "&instructor=" + instructor +  "'><div>" +
+ 					"<h3>" + name + "</h3>" +
+ 					"<span class='item-note'>" + time + " " + instructor + "</span>" +
+ 					"<p>" + day + "</p></div></a>");
+ 			});
+ 		});
+ 	});
+</script>
+</head>
+<body>
+<div class="nav-bar home-navigation">
+	<div class="logo content-container center">
+		<img src="img/mycal.png">
+		<a href="insert.html"><img src="img/plus.png"></a>
+	</div>
+</div>
+<div class="content-container center">
+	<div class="list content-container center" id="listview"></div>
+</div>  
+</body>
+</html>

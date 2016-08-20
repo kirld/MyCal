@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "de.kiralynn"
+        version   = "1.0.0">
+
+    <name>Scheduler</name>
+    <description>
+       Schedule app to help you manage your classes/
+    </description>
+     <author href="http://kiraderksen.de" email="kiraderksen@hotmail.ca">
+        Kira Derksen
+    </author>
+     <!-- Customize your app and platform with the preference element. -->
+    <preference name="orientation"                value="portrait" /> 
+    <preference name="target-device"              value="universal" />  
+    <preference name="fullscreen"                 value="true" />    
+
+    <!-- Plugins -->
+
+    <!-- Core plugins -->
+    <gap:plugin name="org.apache.cordova.network-information" />
+
+    <gap:plugin name="org.apache.cordova.splashscreen" source="npm"/>
+
+    <preference name="SplashScreen" value="screen" />
+
+    <!-- Define app icon for each platform. -->
+    <icon src="icon/36x36.png"   gap:platform="android"    gap:qualifier="ldpi" />
+    <icon src="icon/48x48.png"   gap:platform="android"    gap:qualifier="mdpi" />
+    <icon src="icon/72x72.png"   gap:platform="android"    gap:qualifier="hdpi" />
+    <icon src="icon/96x96.png"  gap:platform="android"    gap:qualifier="xhdpi" />
+    <icon src="icon/144x144.png"  gap:platform="android"    gap:qualifier="xxhdpi" />
+
+
+    <!-- Define app splash screen  -->
+    
+    <gap:splash src="splash.png" />
+
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>

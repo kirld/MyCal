@@ -1,0 +1,84 @@
+<html>
+<head>
+     <link rel="stylesheet" type="text/css" href="css/style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+     <!-- google fonts -->
+     <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+     <!-- end google fonts -->
+</head>
+
+<body>
+	<div class="nav-bar home-navigation">
+		<div class="logo content-container center">
+			<img src="img/mycal.png">
+			<a href="index.html"><img src="img/home.png"></a>
+		</div>
+	</div>
+	<div class="insert content-container center">
+		<h1>Insert</h1>
+		<input type="hidden" id="id" value="" />
+		<label>Name</label><br>
+		<input type="text" id="name" placeholder="Class Name" value=""/>
+
+		<br><br>
+
+		<label>Day</label><br>
+		<select id="day">
+			<option value="Monday">Monday</option>
+			<option value="Tuesday">Tuesday</option>
+			<option value="Wednesday">Wednesday</option>
+			<option value="Thursday">Thursday</option>
+			<option value="Friday">Friday</option>
+			<option value="Saturday">Saturday</option>
+			<option value="Sunday">Sunday</option>
+		</select>
+
+		<br><br>
+
+		<label>Time</label><br>
+		<input type="time" id="time" placeholder="ig: 12:00pm - 4:00pm" value=""/>
+
+		<br><br>
+
+		<label>Instructor</label><br>
+		<input type="text" id="instructor" placeholder="Instructor's Name" value=""/>
+
+		<input type="button" id="insert" class="button" value="Insert"/>
+	</div>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$("#insert").click(function(){
+			var name = $("#name").val();
+			var day = $("#day").val();
+			var time = $("#time").val();
+			var instructor = $("#instructor").val();
+
+			var dataString = "name=" + name + "&day=" + day + "&time=" + time + "&instructor=" + instructor + "&insert=";
+
+			if($.trim(name).length > 0 & $.trim(day).length > 0 & $.trim(time).length > 0 & $.trim(instructor).length > 0){
+				$.ajax({
+					type: "POST",
+					url: "http://localhost/CRUD/php/insert.php",
+					data: dataString,
+					crossDomain: true,
+					cache: false,
+					beforeSend: function(){
+						$("#insert").val("...connection");
+					},
+					success: function(data){
+						if(data == "ok"){
+							$("#insert").val("Submit");
+							location.href = 'index.html';
+						}
+						else if(data == "error"){
+
+						}
+					}
+				});
+			} return false
+		});
+	});
+	</script> 
+</body>
+</html>
