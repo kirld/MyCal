@@ -2,9 +2,9 @@
  	header("Access-Control-Allow-Origin: *");
 
  	$host = "localhost";
- 	$username = "root";
- 	$password = "";
- 	$database = "vanarts_db";
+ 	$username = "kiralynn_myCal";
+ 	$password = "myCal";
+ 	$database = "kiralynn_schedule";
 
  	$connection = mysqli_connect($host,$username,$password,$database);
 
