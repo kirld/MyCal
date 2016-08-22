@@ -43,6 +43,7 @@ span {
 .content-container {
 	/*80 percent width of screen size*/
 	width: 80vw;
+	margin-bottom: 45px;
 }
 
 /******END BASE ******/
@@ -162,3 +163,11 @@ label {
 	}
 
 /*****End Basic Form Styling ******/
+
+/***** Footer ******/
+
+.footer-bar {
+	height: 75px;
+	background-color: rgba(38,38,38,0.7);
+	width: 100%;
+}
