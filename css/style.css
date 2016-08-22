@@ -60,6 +60,7 @@ span {
 	.nav-bar img {
 		max-width: 35%;
 		padding-left: 10px;
+		padding-top: 5px;
 	}
 
 	.nav-bar a img {
