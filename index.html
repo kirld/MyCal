@@ -17,11 +17,12 @@
  				var id = field.id;
  				var name = field.name;
  				var day = field.day;
+ 				var timeOfDay = field.timeOfDay;
  				var instructor = field.instructor;
  				var time = field.time;
- 				$("#listview").append("<a class='item' href='edit.html?id=" + id + "&name=" + name + "&day="  + day + "&time="  + time + "&instructor=" + instructor +  "'><div>" +
+ 				$("#listview").append("<a class='item' href='edit.html?id=" + id + "&name=" + name + "&day="  + day + "&time="  + time + "&timeOfDay=" + timeOfDay  + "&instructor=" + instructor +  "'><div>" +
  					"<h3>" + name + "</h3>" +
- 					"<span class='item-note'>" + time + " " + instructor + "</span>" +
+ 					"<span class='item-note'>" + time + " " + timeOfDay + " " + instructor + "</span>" +
  					"<p>" + day + "</p></div></a>");
  			});
  		});
@@ -29,14 +30,12 @@
 </script>
 </head>
 <body>
-<div class="nav-bar home-navigation">
-	<div class="logo content-container center">
+<div class="nav-bar">
+	<div class="content-container center">
 		<img src="img/mycal.png">
 		<a href="insert.html"><img src="img/plus.png"></a>
 	</div>
 </div>
-<div class="content-container center">
-	<div class="list content-container center" id="listview"></div>
-</div>  
+<div class="list content-container center" id="listview"></div>
 </body>
 </html>

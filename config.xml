@@ -4,9 +4,9 @@
         id        = "de.kiralynn"
         version   = "1.0.0">
 
-    <name>Scheduler</name>
+    <name>MyCal</name>
     <description>
-       Schedule app to help you manage your classes/
+       Schedule app to help you manage your classes
     </description>
      <author href="http://kiraderksen.de" email="kiraderksen@hotmail.ca">
         Kira Derksen

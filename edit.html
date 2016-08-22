@@ -9,8 +9,8 @@
  	<script type="text/javascript" src="js/geturi.js"></script>
 </head>
 <body>
-	<div class="nav-bar home-navigation">
-		<div class="logo content-container center">
+	<div class="nav-bar">
+		<div class="nav-bar-inner content-container center">
 			<img src="img/mycal.png">
 			<a href="index.html"><img src="img/home.png"></a>
 		</div>
@@ -19,23 +19,58 @@
 		<h1 style="text-align:center">Edit or Delete</h1>
 		<div>
 			<input type="hidden" id="id" value="" />
-			<div class="input-options">
+
+			<div>
 				<label>Name</label>
 				<input type="text" id="name" value=""/>
 			</div>
-			<div class="input-options">
+
+			<br><br>
+
+			<div>
 				<label>Day</label>
 				<input type="text" id="day" value="" />
 			</div>
-			<div class="input-options">
-				<label>Time</label>
-				<input type="text" id="time" value="" />
+
+			<br><br>
+
+			<div>
+				<label>Start Time</label><br>
+				<select id="time">
+					<option value="1:00">1:00</option>
+					<option value="2:00">2:00</option>
+					<option value="3:00">3:00</option>
+					<option value="4:00">4:00</option>
+					<option value="5:00">5:00</option>
+					<option value="6:00">6:00</option>
+					<option value="7:00">7:00</option>
+					<option value="8:00">8:00</option>
+					<option value="9:00">9:00</option>
+					<option value="10:00">10:00</option>
+					<option value="11:00">11:00</option>
+					<option value="12:00">12:00</option>
+				</select>
 			</div>
-			<div class="input-options">
+
+			<br><br>
+
+			<div>
+				<label>AM or PM</label><br>
+				<div class="time-value">
+				 	<input type="radio" name="timeOfDay" value="AM">AM
+				 	<input type="radio" name="timeOfDay" value="PM">PM
+			 	</div>
+			</div>
+
+			<br><br>
+
+			<div>
 				<label>Instructor</label>
 				<input type="text" id="instructor" value="" />
 			</div>
-			<div class="input-options">
+
+
+			<div class="button-container">
 				<input class="button" type="button" id="update" value="Update" />
 				<input class="button" type="button" id="delete" value="Delete" />
 			</div>
@@ -44,17 +79,19 @@
 	</div>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var idx = decodeURI(getUrlVars()["id"]);
-			var namex = decodeURI(getUrlVars()["name"]);
-			var dayx = decodeURI(getUrlVars()["day"]);
-			var timex = decodeURI(getUrlVars()["time"]);
-			var instructorx = decodeURI(getUrlVars()["instructor"]);
+			var setId = decodeURI(getUrlVars()["id"]);
+			var setName = decodeURI(getUrlVars()["name"]);
+			var setDay = decodeURI(getUrlVars()["day"]);
+			var setTimeOfDay = decodeURI(getUrlVars()["timeOfDay"]);
+			var setTime = decodeURI(getUrlVars()["time"]);
+			var setInstructor = decodeURI(getUrlVars()["instructor"]);
 
-			$("#id").val(idx);
-			$("#name").val(namex);
-			$("#day").val(dayx);
-			$("#time").val(timex);
-			$("#instructor").val(instructorx);
+			$("#id").val(setId);
+			$("#name").val(setName);
+			$("#day").val(setDay);
+			$("#time option[value='" + setTime + "']").attr('selected','selected');
+			$("input[name=timeOfDay][value='" + setTimeOfDay + "']").attr('checked', 'checked');
+			$("#instructor").val(setInstructor);
 
 			$("#update").click(function(){
 				// Grab all the text in the inputs
@@ -62,10 +99,11 @@
 				var name = $("#name").val();
 				var day = $("#day").val();
 				var time = $("#time").val();
+				var timeOfDay = $("input[name=timeOfDay]:checked").val();
 				var instructor = $("#instructor").val();
 				// Create the dataString using the values in the inputs
-				var dataString = "id=" + id + "&name=" + name + "&day=" + day + "&time=" + time + "&instructor=" + instructor + "&update=";
-				console.log(dataString);
+				var dataString = "id=" + id + "&name=" + name + "&day=" + day + "&time=" + time + "&timeOfDay=" + timeOfDay + 
+				"&instructor=" + instructor + "&update=";
 				// Create AJAX request
 				$.ajax({
 					type: "POST",
