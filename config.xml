@@ -37,8 +37,8 @@
 
     <!-- Core plugins -->
     <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.device-orientation" />
-    <gap:plugin name="org.apache.cordova.network-information" />
+<!--     <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.network-information" /> -->
     <gap:plugin name="org.apache.cordova.splashscreen" />
 
     <!-- Third party plugins -->
@@ -58,7 +58,7 @@
 
     <!-- Define app splash screen-->
     <gap:splash src="splash.png" />
-    
+
     <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
     <!-- Whitelist configuration. Refer to https://cordova.apache.org/docs/en/edge/guide_appdev_whitelist_index.md.html -->
@@ -72,9 +72,4 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
-    <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
-    </platform>
-
 </widget>
