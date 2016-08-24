@@ -36,7 +36,6 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
-<!--     <gap:plugin name="org.apache.cordova.device" /> -->
     <gap:plugin name="org.apache.cordova.splashscreen" />
 
     <!-- Third party plugins -->
